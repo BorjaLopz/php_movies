@@ -33,7 +33,7 @@ function MisPeliculasComponent() {
                 src={`https://image.tmdb.org/t/p/w500/${movie.imagen}`}
                 alt=""
               />
-            <button>Borrar pelicula</button>
+            <button>Borrar película</button>
             </div>
           </article>
         ))}
