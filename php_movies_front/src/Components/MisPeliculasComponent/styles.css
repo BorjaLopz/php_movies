@@ -32,16 +32,10 @@
 }
 
 .movieInfo {
-  /* flex-grow: 1;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-around;
-  align-items: center; */
+  margin: 5px;
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: 40% 10% 30% 20%;
 
   align-items: center;
   justify-items: center;
@@ -52,6 +46,23 @@
 }
 
 .movieInfo img {
-  width: 8rem;
-  border-radius: 5px; /* Bordes redondeados para la imagen */
+  width: 6rem;
+  border-radius: 10px; /* Bordes redondeados para la imagen */
 }
+
+#deleteMovieButton {
+  height: 2rem;
+  width: 75%;
+  background-color: rgb(179, 1, 1);
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+#deleteMovieButton:hover {
+  cursor: pointer;
+  background-color: rgb(216, 2, 2);
+  height: 2.1rem;
+  width: 78%;
+}
+

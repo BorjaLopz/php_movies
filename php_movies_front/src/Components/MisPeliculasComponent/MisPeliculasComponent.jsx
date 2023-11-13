@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
+import toast from "react-hot-toast";
 
 function MisPeliculasComponent() {
   const [databaseMovies, setDatabaseMovies] = useState([]);
@@ -20,6 +21,36 @@ function MisPeliculasComponent() {
     fetchDatabaseMovies();
   }, []);
 
+  const handleDeleteMovie = (movieInfo) => {
+    // Configuración de la solicitud DELETE
+    const reqOptions = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    console.log("movieInfo");
+    console.log(movieInfo);
+
+    // Realizar la solicitud DELETE a tu endpoint de backend
+    fetch(`http://localhost:8000/api/deletemovie/${movieInfo.id}`, reqOptions)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            `Error al eliminar la película. Código de estado: ${response.status}`
+          );
+        }
+        console.log("Película eliminada correctamente");
+        toast.success("Película eliminada correctamente");
+      })
+      .catch((error) => {
+        console.error("Error al realizar la solicitud DELETE:", error);
+        toast.error(`Error al realizar la solicitud DELETE:  ${error}`);
+        // Manejar errores aquí
+      });
+  };
+
   return (
     <main className="Main">
       <h1>Mis películas</h1>
@@ -33,7 +64,12 @@ function MisPeliculasComponent() {
                 src={`https://image.tmdb.org/t/p/w500/${movie.imagen}`}
                 alt=""
               />
-            <button>Borrar película</button>
+              <button
+                id="deleteMovieButton"
+                onClick={() => handleDeleteMovie(movie)}
+              >
+                Borrar película
+              </button>
             </div>
           </article>
         ))}
