@@ -1,4 +1,7 @@
 <?php
+
+// src/Controller/HelloWorld.php
+
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
