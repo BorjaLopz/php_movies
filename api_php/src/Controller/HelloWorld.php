@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class HelloWorld extends AbstractController
 {
     //set the route, so [site URL]/hello will trigger this
-    #[Route('/hello', name: 'hello_world')]
+    #[Route('/api/hello', name: 'api_hello')]
     public function hello(): Response
     {
       //create a new Response object
