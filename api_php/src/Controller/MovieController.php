@@ -8,38 +8,45 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Movie;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MovieController extends AbstractController
 {
     #[Route('/api/addmovie', name: 'api_add_movie', methods: ["POST"])]
     public function addMovie(Request $req, EntityManagerInterface $entityManager): Response {
+      try {
 
-     // Obtener el contenido JSON de la solicitud
+        // Obtener el contenido JSON de la solicitud
         $data = json_decode($req->getContent(), true);
+        
+        // Comprobamos que solo exista una pelicula con un id_TMDB
+        $peliculaExistente = $entityManager->getRepository(Movie::class)->findOneBy(['id_TMDB' => $data['id']]);
+        
+      if($peliculaExistente){
+        throw new Exception('La película ya está en la base de datos');
+      }
 
-        // dump($data);
-        // error_log($data);
+      // Crear una nueva instancia de la entidad Movie
+      $movie = new Movie();
+      $movie->setNombre($data['title']);
+      $movie->setRating($data['vote_average']);
+      $movie->setImagen($data['poster_path']);
+      $movie->setIdTMDB($data['id']);
+      
+      
+      // Persistir la entidad en la base de datos
+      $entityManager->persist($movie);
+      $entityManager->flush();
 
-        // Crear una nueva instancia de la entidad Movie
-        $movie = new Movie();
-        $movie->setNombre($data['title']); // Ajusta según la estructura de tu entidad
-        $movie->setRating($data['vote_average']); // Ajusta según la estructura de tu entidad
-        $movie->setImagen($data['poster_path']); // Ajusta según la estructura de tu entidad
-
-
-        // Realizar alguna lógica con los datos recibidos
-        // Por ejemplo, podrías guardarlos en la base de datos o realizar alguna otra operación
-
-        // Persistir la entidad en la base de datos
-        $entityManager->persist($movie);
-        $entityManager->flush();
-
-        // Devolver una respuesta en formato JSON
-        return new Response(json_encode(['message' => 'Datos recibidos correctamente']), 200, ['Content-Type' => 'application/json']);
+      // Devolver una respuesta en formato JSON
+      return $this->json(['message' => 'Datos recibidos correctamente']);
+    }catch(Exception $e) {
+      return new JsonResponse(['error' => $e->getMessage()], 500);
+    }
     }
 
-    #[Route('api/getmovies', name: "get movies")]
+    #[Route('api/getmovies', name: "get_movies")]
     public function getMovies(EntityManagerInterface $entityManager) : JsonResponse{
         $repository = $entityManager->getRepository(Movie::class);
         $movies = $repository->findAll();
@@ -52,11 +59,25 @@ class MovieController extends AbstractController
                 'title' => $movie->getNombre(),
                 'rating' => $movie->getRating(),
                 'imagen' => $movie->getImagen(),
-                // Añade más propiedades según tu entidad 
             ];
         }
 
         return $this->json($moviesArray);
+    }
+
+    #[Route('api/deletemovie/{id}', name: "delete_movie", methods: ["DELETE"])]
+    public function deleteMovie(int $id, EntityManagerInterface $entityManager): JsonResponse {
+
+      $movie = $entityManager->getRepository(Movie::class)->find($id);
+
+      if(!$movie) {
+        return $this->json(['error' => 'Pelicula no encontrada'], 404);
+      }
+
+      $entityManager->remove($movie);
+      $entityManager->flush();
+
+      return $this->json(['message' => "Pelicula eliminada correctamente"]);
     }
 
 }
