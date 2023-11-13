@@ -8,12 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Movie;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MovieController extends AbstractController
 {
     #[Route('/api/addmovie', name: 'api_add_movie', methods: ["POST"])]
-    public function addMovie(Request $req, EntityManagerInterface $entityManager): Response
-    {
+    public function addMovie(Request $req, EntityManagerInterface $entityManager): Response {
 
      // Obtener el contenido JSON de la solicitud
         $data = json_decode($req->getContent(), true);
@@ -38,4 +38,25 @@ class MovieController extends AbstractController
         // Devolver una respuesta en formato JSON
         return new Response(json_encode(['message' => 'Datos recibidos correctamente']), 200, ['Content-Type' => 'application/json']);
     }
+
+    #[Route('api/getmovies', name: "get movies")]
+    public function getMovies(EntityManagerInterface $entityManager) : JsonResponse{
+        $repository = $entityManager->getRepository(Movie::class);
+        $movies = $repository->findAll();
+
+        // Transforma las entidades en un array asociativo antes de devolverlas como JSON
+        $moviesArray = [];
+        foreach ($movies as $movie) {
+            $moviesArray[] = [
+                'id' => $movie->getId(),
+                'title' => $movie->getNombre(),
+                'rating' => $movie->getRating(),
+                'imagen' => $movie->getImagen(),
+                // Añade más propiedades según tu entidad 
+            ];
+        }
+
+        return $this->json($moviesArray);
+    }
+
 }
