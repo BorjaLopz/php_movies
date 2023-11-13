@@ -2,25 +2,18 @@ const IMG_API = "https://image.tmdb.org/t/p/w500/";
 
 function MovieCardsComponents({ movie }) {
   const handleAddClick = (movieInfo) => {
-    // Datos que quieres enviar en el cuerpo de la solicitud
-    const data = {
-      movieInfo
-    };
-
-    console.log("data");
-    console.log(data);
 
     // Configuración de la solicitud
-    const requestOptions = {
+    const reqOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(movieInfo),
     };
 
     // Realizar la solicitud a tu endpoint de backend
-    fetch("http://localhost:8000/api/addmovie", requestOptions)
+    fetch("http://localhost:8000/api/addmovie", reqOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log("Respuesta del servidor:", data);
