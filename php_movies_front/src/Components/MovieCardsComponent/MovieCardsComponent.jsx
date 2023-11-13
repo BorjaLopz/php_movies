@@ -1,9 +1,8 @@
-const IMG_API = "https://image.tmdb.org/t/p/w500/";
+import toast from "react-hot-toast";
 
 function MovieCardsComponents({ movie }) {
   const handleAddClick = (movieInfo) => {
-
-    // Configuración de la solicitud
+    // Configuramos la solicitud
     const reqOptions = {
       method: "POST",
       headers: {
@@ -12,16 +11,21 @@ function MovieCardsComponents({ movie }) {
       body: JSON.stringify(movieInfo),
     };
 
-    // Realizar la solicitud a tu endpoint de backend
+    // console.log("movieInfo");
+    // console.log(movieInfo);
+
+    // Hacemos fetch a nuestro endpoint
     fetch("http://localhost:8000/api/addmovie", reqOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log("Respuesta del servidor:", data);
-        // Puedes realizar acciones adicionales según la respuesta del servidor
+        if (data?.error) {
+          toast.error(data.error);
+        } else {
+          toast.success("Película añadida exitosamente");
+        }
       })
       .catch((error) => {
         console.error("Error al realizar la solicitud:", error);
-        // Manejar errores aquí
       });
   };
 
@@ -54,7 +58,10 @@ function MovieCardsComponents({ movie }) {
               </div>
 
               <div className="right-content">
-                <button className="card-btn" onClick={() =>handleAddClick(movie)}>
+                <button
+                  className="card-btn"
+                  onClick={() => handleAddClick(movie)}
+                >
                   Añadir
                 </button>
               </div>

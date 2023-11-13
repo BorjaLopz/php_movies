@@ -1,4 +1,5 @@
 import "./App.css";
+import { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage";
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route
           path="/"

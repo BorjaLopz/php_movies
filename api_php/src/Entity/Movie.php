@@ -16,8 +16,11 @@ class Movie
     #[ORM\Column(length: 255)]
     private ?string $nombre = null;
 
+    #[ORM\Column(type: "decimal", scale: 2, nullable: true)]
+    private ?float $rating = null;
+
     #[ORM\Column(nullable: true)]
-    private ?int $rating = null;
+    private ?int $id_TMDB = null;
 
     #[ORM\Column(length: 1000, nullable: true)]
     private ?string $imagen = null;
@@ -26,6 +29,12 @@ class Movie
     {
         return $this->id;
     }
+
+    public function getIdTMDB(): ?int
+    {
+        return $this->id_TMDB;
+    }
+
 
     public function getNombre(): ?string
     {
@@ -39,12 +48,19 @@ class Movie
         return $this;
     }
 
-    public function getRating(): ?int
+    public function setIdTMDB(?int $id_TMDB): ?int
+    {
+        $this->id_TMDB = $id_TMDB;
+
+        return $this->id_TMDB;
+    }
+
+    public function getRating(): ?float
     {
         return $this->rating;
     }
 
-    public function setRating(?int $rating): static
+    public function setRating(?float $rating): static
     {
         $this->rating = $rating;
 
