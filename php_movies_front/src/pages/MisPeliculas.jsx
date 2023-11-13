@@ -1,10 +1,11 @@
 import HeaderComponent from "../Components/HeaderComponent/HeaderComponent";
+import MisPeliculasComponent from "../Components/MisPeliculasComponent/MisPeliculasComponent";
 
 function MisPeliculas() {
   return (
     <>
       <HeaderComponent />
-      <h1>Mis Peliculas</h1>
+      <MisPeliculasComponent />
     </>
   );
 }

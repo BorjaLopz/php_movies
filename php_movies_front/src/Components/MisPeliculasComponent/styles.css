@@ -1,0 +1,57 @@
+.Main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+}
+
+.listadoPeliculas {
+  margin: 0 auto;
+  max-width: 60%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.listadoPeliculas .pelicula {
+  border: 1px solid #cccccc46;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 12rem;
+  display: flex;
+  flex-direction: row;
+
+  text-transform: capitalize;
+  text-align: center;
+  font-size: 1.4rem;
+
+}
+
+.movieInfo {
+  /* flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-around;
+  align-items: center; */
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+
+  align-items: center;
+  justify-items: center;
+}
+
+.movie-info h3 {
+  margin: 0;
+}
+
+.movieInfo img {
+  width: 8rem;
+  border-radius: 5px; /* Bordes redondeados para la imagen */
+}
