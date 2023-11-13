@@ -1,0 +1,22 @@
+.loadMoreBtn {
+  width: 120px;
+  background-color: #01579b;
+  color: #fff;
+  cursor: pointer;
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.4rem;
+  transition: all 0.5s ease;
+}
+
+.loadMoreBtn:hover {
+  background-color: #0091ea;
+  border: 1px solid #fff;
+}
+
+#loadMoreBtn {
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
