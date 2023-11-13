@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./style.css";
+import { useLocation } from "react-router-dom";
 import RenderMovies from "../RenderMovies/RenderMovies";
 import LoadMoreElementsComponent from "../LoadMoreElementsComponent/LoadMoreElementsComponent";
 
@@ -20,6 +21,8 @@ function MainComponent({ movieFiltered }) {
   const [movieCardsToSee, setMovieCardsToSee] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredPage, setFilteredPage] = useState(1);
+
+  const location = useLocation();
 
   // const handleSetCurrentPage = (data) => {
   //   if (data.page < data.total_pages) {
@@ -112,6 +115,10 @@ function MainComponent({ movieFiltered }) {
       fetchTopMovies(currentPage);
     }
   }, [movieFiltered, currentPage]);
+
+  useEffect(() => {
+    setMoviesFiltered({});
+  }, [location.pathname]);
 
   // useEffect(() => {
   //   fetchFilteredData();

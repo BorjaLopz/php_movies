@@ -37,6 +37,7 @@
 
 #sectionMoviesFiltered .movieCard .card-content .card-btn {
   color: #fff;
+  background-color: rgba(0, 0, 0, 0.253);
   cursor: pointer;
   padding: 6px 8px;
   border: 1px solid rgba(255, 255, 255, 0.5);

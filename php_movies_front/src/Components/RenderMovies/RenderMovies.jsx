@@ -1,8 +1,12 @@
 import MovieCardsComponents from "../MovieCardsComponent/MovieCardsComponent";
+import { useLocation } from "react-router-dom";
 
 function RenderMovies({ render, moviesFiltered = {} }) {
-  console.log("render");
-  console.log(render);
+
+  const location = useLocation();
+
+  // console.log("render");
+  // console.log(render);
   if (JSON.stringify(moviesFiltered) !== "{}") {
     return (
       <>

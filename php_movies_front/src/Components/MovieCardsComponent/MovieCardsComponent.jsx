@@ -1,6 +1,37 @@
 const IMG_API = "https://image.tmdb.org/t/p/w500/";
 
 function MovieCardsComponents({ movie }) {
+  const handleAddClick = (movieInfo) => {
+    // Datos que quieres enviar en el cuerpo de la solicitud
+    const data = {
+      movieInfo
+    };
+
+    console.log("data");
+    console.log(data);
+
+    // Configuración de la solicitud
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+
+    // Realizar la solicitud a tu endpoint de backend
+    fetch("http://localhost:8000/api/addmovie", requestOptions)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Respuesta del servidor:", data);
+        // Puedes realizar acciones adicionales según la respuesta del servidor
+      })
+      .catch((error) => {
+        console.error("Error al realizar la solicitud:", error);
+        // Manejar errores aquí
+      });
+  };
+
   return (
     <article className="movieCard">
       <div className="column">
@@ -30,13 +61,9 @@ function MovieCardsComponents({ movie }) {
               </div>
 
               <div className="right-content">
-                <a
-                  href={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                  target="_blank"
-                  className="card-btn"
-                >
-                  See Cover
-                </a>
+                <button className="card-btn" onClick={() =>handleAddClick(movie)}>
+                  Añadir
+                </button>
               </div>
             </div>
             <div className="info">
