@@ -15,7 +15,7 @@ Dirigete a la carpeta `api_php` y abre un terminal.
   php bin/console doctrine:database:create
 ```
 
-Una vez hecho esto debemos comprobar si nos ha creado la base de datos `movies_php` correctamente además de su tabla correspondiente. 
+Una vez hecho esto debemos comprobar si nos ha creado la base de datos `movies_php` correctamente además de su tabla `movie` correspondiente. 
 
 ***En caso de que solamente haya creado la base de datos sin la tabla***
 
