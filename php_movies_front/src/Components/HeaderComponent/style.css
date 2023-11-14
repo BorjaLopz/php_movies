@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  max-width: 1200px;
   align-items: center;
   margin: 15px 0 30px 0;
 }
@@ -36,6 +35,11 @@
   background-color: rgba(255, 255, 255, 0.9);
 }
 
+.searchBoxDisabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
 .searchBox .searchBtn {
   width: 120px;
   background-color: #01579b;
@@ -63,12 +67,22 @@
 .navLinks ul li {
   list-style: none;
   text-transform: uppercase;
-  font-size: 1.4rem;
-  text-decoration: underline;
+  font-size: 1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .navLinks ul li:hover, .searchBox h1 {
   cursor: pointer;
+}
+
+.navLinks img {
+  width: 2rem;
 }
 
 
