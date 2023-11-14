@@ -11,7 +11,7 @@ Para comenzar a usar este proyecto necesitaras inicializar tanto la parte de bac
 
 Dirigete a la carpeta `api_php` y abre un terminal. 
 
-```http
+```
   php bin/console doctrine:database:create
 ```
 
@@ -19,7 +19,7 @@ Una vez hecho esto debemos comprobar si nos ha creado la base de datos `movies_p
 
 ***En caso de que solamente haya creado la base de datos sin la tabla***
 
-```http
+```
   php bin/console doctrine:schema:update --force
 ```
 
@@ -27,7 +27,7 @@ Una vez hecho esto debemos comprobar si nos ha creado la base de datos `movies_p
 
 Dirigete a la carpeta `php_movies_front` y abre un terminal. 
 
-```http
+```
   npm run dev
 ```
 ## Guía Rápida de la API
