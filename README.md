@@ -23,6 +23,13 @@ Una vez hecho esto debemos comprobar si nos ha creado la base de datos `movies_p
   php bin/console doctrine:schema:update --force
 ```
 
+Una vez hecho esto simplemente tendremos que ejecutar el comando para lanzar el servidor
+
+```
+  symfony server:start 
+```
+
+
 #### Frontend
 
 Dirigete a la carpeta `php_movies_front` y abre un terminal. 
