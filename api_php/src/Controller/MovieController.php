@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class MovieController extends AbstractController
 {
-    #[Route('/api/addmovie', name: 'api_add_movie', methods: ["POST"])]
+    #[Route("/api/addmovie", name: 'api_add_movie', methods: ["POST"])]
     public function addMovie(Request $req, EntityManagerInterface $entityManager): Response {
       try {
 
@@ -29,9 +29,9 @@ class MovieController extends AbstractController
 
       // Crear una nueva instancia de la entidad Movie
       $movie = new Movie();
-      $movie->setNombre($data['title']);
+      $movie->setName($data['title']);
       $movie->setRating($data['vote_average']);
-      $movie->setImagen($data['poster_path']);
+      $movie->setImage($data['poster_path']);
       $movie->setIdTMDB($data['id']);
       
       
@@ -56,9 +56,9 @@ class MovieController extends AbstractController
         foreach ($movies as $movie) {
             $moviesArray[] = [
                 'id' => $movie->getId(),
-                'title' => $movie->getNombre(),
+                'title' => $movie->getName(),
                 'rating' => $movie->getRating(),
-                'imagen' => $movie->getImagen(),
+                'imagen' => $movie->getImage(),
             ];
         }
 

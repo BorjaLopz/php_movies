@@ -1,4 +1,4 @@
-import MainComponent from "../components/MainComponent/MainComponent";
+import MainComponent from "../Components/MainComponent/MainComponent";
 
 function Main({ movieFiltered }) {
   return <MainComponent movieFiltered={movieFiltered} />;

@@ -120,24 +120,6 @@ function MainComponent({ movieFiltered }) {
     setMoviesFiltered({});
   }, [location.pathname]);
 
-  // useEffect(() => {
-  //   fetchFilteredData();
-  // }, [movieFiltered]);
-
-  // useEffect(() => {
-  //   fetchTopMovies();
-  //   fetchFilteredData();
-  // }, [currentPage]);
-
-  // useEffect(() => {
-  //   fetchTopMovies();
-  // }, []);
-
-  // console.log("movieCardsToSee");
-  // console.log(movieCardsToSee);
-  // console.log("movieFiltered");
-  // console.log(movieFiltered);
-
   return (
     <main className="Main">
       <section id="sectionMoviesFiltered">
