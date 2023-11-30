@@ -2,6 +2,10 @@
 
 En este proyecto podremos añadir, listar y borrar películas a la base de datos. 
 
+## PREVIEW
+
+![](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdG9vNnNxNmtzc210YmtkeHY0aWNqMG9kaGEzcjFuamM3cHlubjlpaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/u6PSUoCtoQ2kvpcEJF/giphy.gif)
+
 
 ## Inicialización
 
