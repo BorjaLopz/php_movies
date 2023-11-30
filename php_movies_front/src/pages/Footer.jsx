@@ -1,4 +1,4 @@
-import FooterComponent from "../components/FooterComponent/FooterComponent";
+import FooterComponent from "../Components/FooterComponent/FooterComponent";
 
 function Footer() {
   return <FooterComponent />;

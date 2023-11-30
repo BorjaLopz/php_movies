@@ -32,8 +32,8 @@ function MisPeliculasComponent() {
       },
     };
 
-    console.log("movieInfo");
-    console.log(movieInfo);
+    // console.log("movieInfo");
+    // console.log(movieInfo);
 
     // Realizar la solicitud DELETE a tu endpoint de backend
     fetch(`http://localhost:8000/api/deletemovie/${movieInfo.id}`, reqOptions)
@@ -43,12 +43,10 @@ function MisPeliculasComponent() {
             `Error al eliminar la película. Código de estado: ${response.status}`
           );
         }
-        console.log("Película eliminada correctamente");
         toast.success("Película eliminada correctamente");
         setIsLoading(false);
       })
       .catch((error) => {
-        console.error("Error al realizar la solicitud DELETE:", error);
         toast.error(`Error al realizar la solicitud DELETE:  ${error}`);
         // Manejar errores aquí
       });
@@ -59,8 +57,13 @@ function MisPeliculasComponent() {
       {/* <h1>Mis películas</h1> */}
       <section className="listadoPeliculas">
         {isLoading && <h1>Cargando...</h1>}
-        {databaseMovies.length === 0 ? <h2>No has agregado aún ninguna pelicula</h2> : ""}
-        {!isLoading && databaseMovies.length > 0 && 
+        {databaseMovies.length === 0 ? (
+          <h2>No has agregado aún ninguna pelicula</h2>
+        ) : (
+          ""
+        )}
+        {!isLoading &&
+          databaseMovies.length > 0 &&
           databaseMovies.map((movie) => (
             <article key={movie._id} className="pelicula">
               <div className="movieInfo">

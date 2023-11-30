@@ -36,12 +36,12 @@ class Movie
     }
 
 
-    public function getNombre(): ?string
+    public function getName(): ?string
     {
         return $this->nombre;
     }
 
-    public function setNombre(string $nombre): static
+    public function setName(string $nombre): static
     {
         $this->nombre = $nombre;
 
@@ -67,12 +67,12 @@ class Movie
         return $this;
     }
 
-    public function getImagen(): ?string
+    public function getImage(): ?string
     {
         return $this->imagen;
     }
 
-    public function setImagen(?string $imagen): static
+    public function setImage(?string $imagen): static
     {
         $this->imagen = $imagen;
 
