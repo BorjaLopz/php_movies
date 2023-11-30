@@ -32,11 +32,18 @@ Una vez hecho esto simplemente tendremos que ejecutar el comando para lanzar el 
 
 #### Frontend
 
-Dirigete a la carpeta `php_movies_front` y abre un terminal. 
+Dirigete a la carpeta `php_movies_front` y abre un terminal.
+
+```
+  npm i
+```
+Para poder instalar todas las dependencias del proyecto. 
 
 ```
   npm run dev
 ```
+Para poder levantar un servidor cliente y visualizar la página. 
+
 ## Guía Rápida de la API
 
 #### Obtener todas las películas
